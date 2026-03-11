@@ -44,19 +44,12 @@ def submit():
     return render_template("submit_complaint.html")
 
 # ------------------ TRACK COMPLAINT ------------------
-@app.route("/track", methods=["GET","POST"])
+@app.route("/track", methods=["POST"])
 def track():
-    status = None
-    complaint_list = None
-    if request.method=="POST":
-        email = request.form["email"]
-        conn = get_db()
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM complaints WHERE email=?", (email,))
-        complaint_list = cursor.fetchall()
-        conn.close()
-    return render_template("track.html", complaints=complaint_list)
 
+    email = request.form["email"]
+
+    return redirect(f"/user_dashboard/{email}")
 # ------------------ USER DASHBOARD ------------------
 @app.route("/user_dashboard/<email>", methods=["GET","POST"])
 def user_dashboard(email):
