@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Municipal Complaint Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='language.js') }}"></script>
+</head>
+<body>
+<header>
+    <h1 id="title">Municipal Complaint Portal</h1>
+    <select id="lang" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="mr">Marathi</option>
+    </select>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/submit">Submit Complaint</a>
+        <a href="/track">Track Complaint</a>
+       
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Welcome to Municipal Complaint Portal</h2>
+    <p>Submit your complaints easily and track their status.</p>
+</div>
+</body>
+</html>
