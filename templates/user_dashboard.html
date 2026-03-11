@@ -14,7 +14,8 @@
 <tr>
 <th>Name</th>
 <th>Email</th>
-<th>Complaint</th>
+<th>Mobile</th>
+<th>Category</th>
 <th>Status</th>
 </tr>
 
@@ -22,16 +23,15 @@
 
 <tr>
 
-<td>{{ row[0] }}</td>
 <td>{{ row[1] }}</td>
-<td>{{ row[2] }}</td>
 <td>{{ row[3] }}</td>
+<td>{{ row[2] }}</td>
+<td>{{ row[4] }}</td>
+<td>{{ row[8] }}</td>
 
 </tr>
 
 {% endfor %}
 
 </table>
-<a href="/submit">Submit New Complaint</a> | <a href="/track">Track Complaint</a>
-</body>
-</html>
+
