@@ -36,7 +36,7 @@ def submit():
         cursor = conn.cursor()
         cursor.execute("""INSERT INTO complaints
             (name,mobile,email,category,priority,location,image)
-            VALUES (?,?,?,?,?,?,?)""",
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
             (name,mobile,email,category,priority,location,filename,"pending"))
         conn.commit()
         conn.close()
@@ -143,3 +143,4 @@ if __name__=="__main__":
     port = int(os.environ.get("PORT", 5000))
     # host=0.0.0.0 makes the app accessible externally
     app.run(host="0.0.0.0", port=port, debug=True)
+
