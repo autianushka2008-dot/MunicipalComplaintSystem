@@ -44,12 +44,14 @@ def submit():
     return render_template("submit_complaint.html")
 
 # ------------------ TRACK COMPLAINT ------------------
-@app.route("/track", methods=["POST"])
+@app.route("/track", methods=["GET","POST"])
 def track():
 
-    email = request.form["email"]
+    if request.method == "POST":
+        email = request.form["email"]
+        return redirect(f"/user_dashboard/{email}")
 
-    return redirect(f"/user_dashboard/{email}")
+    return render_template("track.html")
 # ------------------ USER DASHBOARD ------------------
 @app.route("/user_dashboard/<email>", methods=["GET","POST"])
 def user_dashboard(email):
