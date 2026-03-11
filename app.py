@@ -63,17 +63,6 @@ def user_dashboard(email):
     return render_template("user_dashboard.html", data=data, email=email)
 
 # ------------------ ADMIN DASHBOARD ------------------
-@app.route("/admin")
-def admin():
-    conn = sqlite3.connect("complaints.db")
-    cursor = conn.cursor()
-
-    cursor.execute("SELECT name,  email, status FROM complaints")
-    data = cursor.fetchall()
-
-    conn.close()
-
-    return render_template("admin_dashboard.html", data=data)
 
 # ------------------ UPDATE STATUS ------------------
 @app.route("/update_status/<int:complaint_id>", methods=["POST"])
