@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Municipal Staff Dashboard</title>
+    <!-- Optional CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2>Municipal Staff Dashboard</h2>
+
+<!-- Complaints Table -->
+<table border="1">
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Address</th>
+    <th>Issue</th>
+    <th>Status</th>
+    <th>Feedback</th>
+    <th>Update Status</th>
+</tr>
+
+{% for row in data %}
+<tr>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[3] }}</td>
+    <td>{{ row[4] }}</td>
+    <td>{{ row[5] }}</td>
+
+    <!-- Current status -->
+    <td>{{ row[6] }}</td>
+
+    <!-- Feedback -->
+    <td>{{ row[7] if row[7] else 'No Feedback' }}</td>
+
+    <!-- Status update form -->
+    <td>
+        <form action="/update_status/{{ row[0] }}" method="post">
+            <select name="status">
+                <option {% if row[6]=='Pending' %}selected{% endif %}>Pending</option>
+                <option {% if row[6]=='In Progress' %}selected{% endif %}>In Progress</option>
+                <option {% if row[6]=='Completed' %}selected{% endif %}>Completed</option>
+            </select>
+            <button type="submit">Update</button>
+        </form>
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>

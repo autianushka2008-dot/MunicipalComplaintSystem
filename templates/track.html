@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Track Complaint</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='language.js') }}"></script>
+</head>
+<body>
+<header>
+    <h1 id="title">Municipal Complaint Portal</h1>
+    <select id="lang" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="mr">Marathi</option>
+    </select>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/submit">Submit Complaint</a>
+        <a href="/track">Track Complaint</a>
+        <a href="/admin">Admin Dashboard</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2 id="track_title">Track Complaint</h2>
+    <form method="POST">
+        <label>Enter your Email:</label>
+        <input type="email" name="email" required>
+        <button type="submit">Track</button>
+    </form>
+
+    {% if complaints %}
+    <h3>Your Complaints</h3>
+    <table>
+        <tr>
+            <th>ID</th><th>Category</th><th>Status</th><th>Priority</th><th>Feedback</th>
+        </tr>
+        {% for c in complaints %}
+        <tr>
+            <td>{{c['id']}}</td>
+            <td>{{c['category']}}</td>
+            <td>{{c['status']}}</td>
+            <td>{{c['priority']}}</td>
+            <td>{{c['feedback'] or "-"}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+</body>
+</html>
