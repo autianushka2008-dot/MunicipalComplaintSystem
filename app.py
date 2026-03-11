@@ -37,7 +37,7 @@ def submit():
         cursor.execute("""INSERT INTO complaints
             (name,mobile,email,category,priority,location,image)
             VALUES (?,?,?,?,?,?,?)""",
-            (name,mobile,email,category,priority,location,filename))
+            (name,mobile,email,category,priority,location,filename,"pending"))
         conn.commit()
         conn.close()
         return "Complaint Submitted Successfully"
@@ -132,8 +132,7 @@ def staff():
     conn = sqlite3.connect("complaints.db")
     cursor = conn.cursor()
     cursor.execute("""
-        SELECT id, name, email,mobile,  status, feedback 
-        FROM complaints
+        SELECT * FROM complaints
     """)
     data = cursor.fetchall()
     conn.close()
