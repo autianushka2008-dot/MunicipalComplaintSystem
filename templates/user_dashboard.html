@@ -5,38 +5,33 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-<h2>Welcome to Your Dashboard</h2>
+
+
+<h2>Your Complaint Status</h2>
 
 <table border="1">
+
 <tr>
-<th>ID</th>
-<th>Category</th>
+<th>Name</th>
+<th>Email</th>
+<th>Complaint</th>
 <th>Status</th>
-<th>Priority</th>
-<th>Feedback</th>
 </tr>
 
-{% for c in data %}
+{% for row in data %}
+
 <tr>
-<td>{{ c['id'] }}</td>
-<td>{{ c['category'] }}</td>
-<td>{{ c['status'] }}</td>
-<td>{{ c['priority'] }}</td>
-<td>
-{% if c['status']=="Resolved" %}
-<form method="POST" action="/feedback/{{c['id']}}">
-<textarea name="feedback" required>{{c['feedback']}}</textarea>
-<input type="hidden" name="email" value="{{email}}">
-<button type="submit">Submit Feedback</button>
-</form>
-{% else %}
--
-{% endif %}
-</td>
-</tr>
-{% endfor %}
-</table>
 
+<td>{{ row[0] }}</td>
+<td>{{ row[1] }}</td>
+<td>{{ row[2] }}</td>
+<td>{{ row[3] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
 <a href="/submit">Submit New Complaint</a> | <a href="/track">Track Complaint</a>
 </body>
 </html>
