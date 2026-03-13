@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Complaint</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='language.js') }}"></script>
+</head>
+<body>
+<header>
+    <h1 id="title">Municipal Complaint Portal</h1>
+    <select id="lang" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="mr">Marathi</option>
+    </select>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/submit">Submit Complaint</a>
+        <a href="/track">Track Complaint</a>
+        <a href="/admin">Admin Dashboard</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2 id="submit_title">Submit Complaint</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <label id="name_label">Name</label>
+        <input type="text" name="name" required>
+
+        <label id="mobile_label">Mobile Number</label>
+        <input type="text" name="mobile" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label id="category_label">Complaint Category</label>
+        <select name="category">
+            <option>Garbage</option>
+            <option>Water Leakage</option>
+            <option>Street Light Problem</option>
+            <option>Road Damage</option>
+        </select>
+
+        <label id="priority_label">Priority</label>
+        <select name="priority">
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+        </select>
+
+        <label id="location_label">Location</label>
+        <input type="text" name="location" id="location" readonly>
+
+        <div id="map"></div>
+
+        <label id="image_label">Upload Image</label>
+        <input type="file" name="image">
+
+        <button type="submit">Submit Complaint</button>
+    </form>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>
+var map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 13,
+    center: {lat: 19.0760, lng: 72.8777} // Pune center example
+});
+map.addListener("click", function(e){
+    document.getElementById("location").value = e.latLng.lat() + "," + e.latLng.lng();
+});
+</script>
+</body>
+</html>

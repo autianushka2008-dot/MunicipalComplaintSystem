@@ -1,29 +1,110 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Municipal Complaint Portal</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="{{ url_for('static', filename='language.js') }}"></script>
-</head>
-<body>
-<header>
-    <h1 id="title">Municipal Complaint Portal</h1>
-    <select id="lang" onchange="changeLanguage()">
-        <option value="en">English</option>
-        <option value="hi">Hindi</option>
-        <option value="mr">Marathi</option>
-    </select>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/submit">Submit Complaint</a>
-        <a href="/track">Track Complaint</a>
-       
-    </nav>
-</header>
 
-<div class="container">
-    <h2>Welcome to Municipal Complaint Portal</h2>
-    <p>Submit your complaints easily and track their status.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Municipal Complaint Portal</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background-image: url("municipal_logo.png");
+    background-size: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-color:#f4f4f4;
+}
+
+.overlay{
+    background-color: rgba(255,255,255,0.9);
+    min-height:100vh;
+    padding:40px;
+}
+
+.header{
+    text-align:center;
+}
+
+.header h1{
+    color:#003366;
+}
+
+.info{
+    width:70%;
+    margin:auto;
+    text-align:center;
+    font-size:18px;
+    margin-top:20px;
+}
+
+.options{
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    margin-top:60px;
+}
+
+.option-box{
+    background-color:#003366;
+    color:white;
+    padding:30px 50px;
+    font-size:22px;
+    font-weight:bold;
+    border-radius:10px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.option-box:hover{
+    background-color:#0055aa;
+    transform:scale(1.05);
+}
+
+</style>
+</head>
+
+<body>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<div class="overlay">
+
+<div class="header">
+<h1>Municipal Complaint Management System</h1>
 </div>
+
+<div class="info">
+<p>
+Welcome to the Municipal Complaint Management Portal.  
+This platform allows citizens to easily report issues related to public services
+such as sanitation, road damage, street lighting, water supply, and other civic
+problems. The municipality works to ensure a clean, safe, and well-maintained
+environment for all residents.
+</p>
+</div>
+
+<div class="options">
+
+<a href="/submit" class="option-box">
+Submit Complaint
+</a>
+
+<a href="/track" class="option-box">
+Track Complaint
+</a>
+
+<a href="/contact" class="option-box">
+Contact Us
+</a>
+
+<a href="/about" class="option-box">
+About
+</a>
+
+</div>
+
+</div>
+
 </body>
 </html>

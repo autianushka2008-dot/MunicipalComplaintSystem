@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Statistics</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+<h1>Complaint Statistics</h1>
+<nav>
+<a href="/">Home</a>
+<a href="/admin">Admin Dashboard</a>
+</nav>
+</header>
+
+<div class="container">
+<table>
+<tr><th>Total Complaints</th><th>Resolved</th><th>Pending</th></tr>
+<tr>
+<td>{{ total }}</td>
+<td>{{ resolved }}</td>
+<td>{{ pending }}</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

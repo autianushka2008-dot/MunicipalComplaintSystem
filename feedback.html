@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <h1>Municipal Complaint Portal</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/submit">Submit Complaint</a>
+        <a href="/track">Track Complaint</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/about">About</a>
+        <a href="/feedback">Feedback</a>
+    </nav>
+</header>
+
+<div class="container">
+
+<h2>Service Feedback</h2>
+
+<p>Please rate the service provided after your complaint was resolved.</p>
+
+<form method="POST">
+
+<label><b>Complaint ID</b></label>
+<input type="text" name="complaint_id" required>
+
+<label><b>Rating</b></label>
+<select name="rating" required>
+<option value="">Select Rating</option>
+<option value="1">1 - Very Poor</option>
+<option value="2">2 - Poor</option>
+<option value="3">3 - Average</option>
+<option value="4">4 - Good</option>
+<option value="5">5 - Excellent</option>
+</select>
+
+<label><b>Comments</b></label>
+<textarea name="comments" rows="4" placeholder="Write your feedback here"></textarea>
+
+<br><br>
+
+<button type="submit">Submit Feedback</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
